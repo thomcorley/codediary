@@ -1,0 +1,19 @@
+current directory: /home/thomcorley/www/heroku/codediary/vendor/cache/ruby/2.4.0/gems/byebug-9.0.6/ext/byebug
+/home/thomcorley/.rvm/rubies/ruby-2.4.1/bin/ruby -r ./siteconf20170508-6026-laog9p.rb extconf.rb
+creating Makefile
+
+current directory: /home/thomcorley/www/heroku/codediary/vendor/cache/ruby/2.4.0/gems/byebug-9.0.6/ext/byebug
+make "DESTDIR=" clean
+
+current directory: /home/thomcorley/www/heroku/codediary/vendor/cache/ruby/2.4.0/gems/byebug-9.0.6/ext/byebug
+make "DESTDIR="
+compiling breakpoint.c
+compiling byebug.c
+compiling context.c
+compiling locker.c
+compiling threads.c
+linking shared-object byebug/byebug.so
+
+current directory: /home/thomcorley/www/heroku/codediary/vendor/cache/ruby/2.4.0/gems/byebug-9.0.6/ext/byebug
+make "DESTDIR=" install
+/usr/bin/install -m 0755 byebug.so ./.gem.20170508-6026-lt784j/byebug
