@@ -7,7 +7,8 @@ class EntriesController < ApplicationController
   require 'ap'
 
   def index
-    @entries = Entry.all.order("created_at DESC")
+    @user = User.find(params[:user_id])
+    @entries = @user.entries.all.order("created_at DESC")
   end
 
   def show
@@ -23,7 +24,8 @@ class EntriesController < ApplicationController
   end
 
   def edit
-    @entry = Entry.find(params[:id])
+    @user = User.find(params[:user_id])
+    @entry = @user.entries.find(params[:id])
   end
 
   def create

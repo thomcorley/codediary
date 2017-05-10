@@ -19,7 +19,7 @@
 		</div>
 	</div>
 
-	<%= form_for :entry, url: entry_path(@entry), method: :patch do |f| %>
+	<%= form_for :entry, url: user_entry_path(@user, @entry), method: :patch do |f| %>
 	<div class="row">
 
 		<div class="col-sm-6">
