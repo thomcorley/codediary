@@ -1,0 +1,41 @@
+<% @selected_entries.each do |entry| %>
+	<div class="single-entry">
+		<div class="row">
+			<div class="col-xs-6 entry-heading">
+				<a href="/entries/<%= entry.id %>"><%= entry.title %></a>
+			</div>
+
+			<div class="col-xs-6 entry-date">
+				<%= entry.created_at.strftime("%d-%b-%Y") %>
+			</div>
+		</div>
+
+		<div class="row tags">
+			<% entry.tags.upcase.split.each do |tag| %>
+			<div class="col-xs-2 tag">
+				<%= link_to tag.upcase, {controller: "searches", action: "index_by_tag", tag: tag.downcase}, :style => "color: #fff" %>
+			</div>
+			<% end %>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-12 entry-content">
+				<%= entry.content.html_safe %>
+			</div>
+		</div>
+
+		<div class="row links">
+
+			<div class="col-xs-6">
+				<%= link_to 'Edit', edit_entry_path(entry) %>
+			</div>
+
+			<div class="col-xs-6">
+				<%= link_to 'Destroy', entry_path(entry),
+				method: :delete,
+				data: { confirm: 'Are you sure?' } 
+				%>
+			</div>
+		</div>
+	</div>
+	<% end %>

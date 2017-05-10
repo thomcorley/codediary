@@ -1,0 +1,12 @@
+<div class= "container-fluid">
+	<div class="empty-space-small"></div>
+
+	<div class="row tag-list">	
+		<% $tags_array.each do |tag| %>
+		<div class="col-xs-1 tag">
+			<%= link_to tag.upcase, {controller: "searches", action: "index_by_tag", tag: tag}, :style => "color: #fff" %>
+		</div>
+		<% end %>
+	</div>
+</div>
+

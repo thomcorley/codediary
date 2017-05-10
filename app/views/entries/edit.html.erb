@@ -1,0 +1,54 @@
+<div class= "container-fluid">
+	<h4>Editing entry...</h4>
+	<br>
+
+	<div class="row">
+		<div class="col-xs-12">
+			<% if @entry.errors.any? %>
+			<div class="error">
+				<h4>
+					<%= pluralize(@entry.errors.count, "error") %>
+				</h4>
+				<ul>
+					<% @entry.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+					<% end %>
+				</ul>
+			</div>
+			<% end %>
+		</div>
+	</div>
+
+	<%= form_for :entry, url: entry_path(@entry), method: :patch do |f| %>
+	<div class="row">
+
+		<div class="col-sm-6">
+			<p>
+				<%= f.text_field :title, placeholder: "Title" %>
+			</p>
+		</div>
+
+		<div class="col-sm-6">
+			<p>
+				<%= f.text_field :tags, placeholder: "Tags"%>
+			</p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-12">
+			<p>
+				<%= f.text_area :content, placeholder: "Enter content here" %>
+			</p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-12">
+			<p>
+				<%= f.submit %>
+			</p>
+		</div>
+	</div>
+	<% end %>
+</div>

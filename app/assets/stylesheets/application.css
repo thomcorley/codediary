@@ -9,7 +9,196 @@
  * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
- *
+
  *= require_tree .
  *= require_self
+ *= require bootstrap.min
  */
+
+
+ hr {
+ 	border-width: 1px;
+ 	display: block;
+ 	border-top: 1px solid #888888;
+ 	margin: 0;
+ }
+
+ a:hover {
+	text-decoration: none;
+ }
+ a {
+	color: #2F323B;
+ }
+ body {
+ 	background-color: rgba(211, 211, 211, 0.15);
+ 	font-family: 'Open Sans', sans-serif;
+ 	color: #2F323B;
+ 	text-align: justify;
+
+ }
+ .banner-header {
+	max-width: 100%;
+	display: block;
+ }
+ .container-fluid {
+ 	max-width: 600px;
+	display: block;
+	position: flex;
+	margin: 0 auto 0 auto;
+	padding: 0 15px 20px 15px;
+ }
+ .codediary-header {
+ 	background-color: #fff;
+ 	width: 100%;
+ 	max-width: 700px;
+ 	margin: 0 auto 0 auto;
+	padding: 0 50px 20px 50px;
+	border: 1px solid lightgrey;
+	border-radius: 10px;
+ }
+ .codediary-footer {
+	background-color: #fff;
+ 	width: 100%;
+ 	max-width: 700px;
+ 	margin: 0 auto 10px auto;
+	padding: 10px 50px 0px 50px;
+	border: 1px solid lightgrey;
+	border-radius: 6px;
+ }
+ .links {
+	text-align: center;
+	font-size: 13px;
+	color: #9ACD32;
+ }
+ a .links {
+	color: #337ab7;
+ }
+ .new-entry-link {
+	padding: 0 5px 0 20px;
+	margin: 15px 5px 0 5px;
+ }
+.single-entry {
+	padding: 0 10px 15px 10px;
+	margin: 25px 5px 0 5px;
+	border-radius: 5px;
+	background-color: rgba(124, 252, 0, 0.05);
+	border: 1px solid lightgrey;
+ }
+ .entry-heading {
+	font-weight: bold;
+	border-top: 0px solid rgb(221, 221, 221);
+	text-align: left;
+	padding-top: 15px;
+	color: #2F323B;
+ }
+ .entry-heading {
+ 	color: #2F323B;
+ }
+ .entry-date {
+	font-weight: normal;
+	text-align: right;
+	min-width: 120px;
+	padding-top: 15px;
+ }
+ .entry-content {
+ 	padding-top: 10px;
+ 	padding-bottom: 10px;
+ }
+ .tag {
+	font-size: 12px;
+	border-radius: 4px;
+	color: #fff;
+	font-weight: bold;
+	background-color: #337ab7;
+	width: auto;
+	padding: 3px 6px 3px 6px;
+	margin: 6px 3px 0 3px;
+ }
+ .tags {
+	margin: 10px 0 0 0;
+	padding: 0;
+ }
+ input[type=text], input[type=password], input[type=select] {
+    width: 250px;
+    padding: 10px 10px;
+    margin-top: 2px;
+    border: 1px solid lightgrey;
+    border-radius: 6px;
+    font-family: monospace, serif;
+}
+input[type=submit] {
+	width: auto;
+    padding: 8px 8px;
+    margin-top: 2px;
+    border: 1px solid lightgrey;
+    border-radius: 6px;
+}
+.form {
+    text-align: left;
+    padding: 0 15px 0 15px;
+}
+textarea {
+	width: 100%;
+	height: 500px;
+    padding: 10px 10px;
+    margin-top: 2px;
+    border: 1px solid lightgrey;
+    border-radius: 6px;
+    font-family: monospace, serif;
+}
+.code {
+	background-color: #fff;
+	width: auto;
+	max-width: 90%;
+	padding: 0 5px 0 5px;
+	border: 1px solid lightgrey;
+	border-radius: 5px;
+	font-family: monospace, serif;
+	color: #3A3D45;
+	display: inline-block;
+	margin: 5px 0 5px 0;
+	text-align: left;
+}
+.intro {
+	margin-left: 5px;
+}
+.selected-tag {
+	margin: 0 0 25px 5px;
+}
+.tag-filter {
+	color: #9ACD32;
+	text-align: center;
+}
+.search-form, .search-error {
+	text-align: center;
+	margin-top: 30px;
+}
+.tag-list {
+	margin-left: 20%;
+	display: block;
+}
+.links-heading {
+	padding-bottom: 15px;
+}
+.error, .search-error{
+	color: red;
+}
+.search-error {
+	text-align: center;
+	margin-top: 0;
+	margin-bottom: -30px;
+}
+.search-go:hover {
+	background-color: #9ACD32;
+	border-color: #9ACD32;
+}
+.empty-space {
+	height: 100px;
+}
+.empty-space-small {
+	height: 50px;
+}
+.reveal {
+    animation-name: scroll-reveal;
+    animation-duration: 1500ms;
+}

@@ -1,0 +1,53 @@
+<div class= "container-fluid">
+	<%= form_for :entry, url: entries_path do |f| %>
+
+	<div class="row">
+		<div class="col-xs-12">
+			<% if @entry.errors.any? %>
+			<div class="error">
+				<h4>
+					<%= pluralize(@entry.errors.count, "error") %>
+				</h4>
+				<ul>
+					<% @entry.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+					<% end %>
+				</ul>
+			</div>
+			<% end %>
+		</div>
+	</div>
+
+	<div class="row">
+		<br>
+
+		<div class="col-sm-6">
+			<p>
+				<%= f.text_field :title, placeholder: "Title" %>
+			</p>
+		</div>
+
+		<div class="col-sm-6">
+			<p>
+				<%= f.text_field :tags, placeholder: "Space-separated tags"%>
+			</p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-12">
+			<p>
+				<%= f.text_area :content, placeholder: "Enter content here, using HTML tags to format the text." %>
+			</p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-12">
+			<p>
+				<%= f.submit %>
+			</p>
+		</div>
+	</div>
+	<% end %>
+</div>

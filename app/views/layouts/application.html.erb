@@ -1,14 +1,57 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Codediary</title>
-    <%= csrf_meta_tags %>
+<head>
+	<title>CodeDiary</title>
+	<%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" charset="UTF-8">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	<link href="https://fonts.googleapis.com/css?family=Proza+Libre" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	<%= csrf_meta_tags %>
+</head>
 
-  <body>
-    <%= yield %>
-  </body>
+<body>
+	<div class="row empty-space-small"></div>
+	<div class= "container-fluid codediary-header">
+		<div class="row">
+			<div style="
+			padding-left: 25px;
+			padding-top: 40px;
+			padding-bottom: 20px;
+			"
+			class="col-xs-12 code-diary-header">
+
+			<a href="/home"><h1 style="font-size: 42px; color: #337ab7; font-family: 'Proza Libre', sans-serif;">CodeDiary.</h1></a>
+			</div>
+		</div>
+
+	<div class="row links links-heading">
+
+	</div>
+
+<%= yield %>
+
+<div class="row empty-space"></div>
+<div class="row empty-space"></div>
+
+<footer class= "container-fluid codediary-footer">
+	<div class="row">
+		<div class="col-xs-12">
+			<a href="http://tom.corley.me" target="_blank">
+				<p>
+					<span class="glyphicon glyphicon-copyright-mark" aria-hidden="true">
+					</span>
+					codeDiary
+				</p>
+			</a>
+		</div>
+	</div>
+</footer>
+
+
+
+</body>
 </html>
