@@ -4,21 +4,22 @@ class UsersController < ApplicationController
   require "securerandom"
   require "awesome_print"
   require "rack"
+  require "pry"
 
-  def index
-    p params
-  end
-
-  def new
-
-  end
-
-  def create
-
-  end
+  # def index
+  #   p params
+  # end
+  #
+  # def new
+  #
+  # end
+  #
+  # def create
+  #
+  # end
 
   def show
-    p @user = User.find(params[:id])
+    @user = User.find(params[:id])
   end
 
   def intro
@@ -54,19 +55,30 @@ class UsersController < ApplicationController
         "access_token" => access_token
       })
 
-    name = res["name"]
+    unless res["name"].nil?
+      name = res["name"]
 
-    user_params = {
-      "first_name" => name.split[0],
-      "last_name" => name.split[1],
-      "email_address" => res["email"]
-    }
+      user_params = {
+        "first_name" => name.split[0],
+        "last_name" => name.split[1],
+        "email_address" => res["email"]
+      }
 
-    @user = User.new(user_params)
-    @user.save
+      @user = User.new(user_params)
 
-		render "show"
-	end
+      if @user.save
+        id = @user.id
+        redirect_to "/users/#{id}"
+      else
+        user = User.where(email_address: @user.email_address).take
+        id = user.id
+        redirect_to "/users/#{id}"
+      end
+
+    end
+
+    end
+
 
   # private
   # def user_params

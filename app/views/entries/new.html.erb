@@ -1,7 +1,7 @@
 <div class= "container-fluid">
-	<%= form_for :entry, url: entries_path do |f| %>
+	<%= form_for :entry, url: user_entries_path do |f| %>
 
-	<div class="row">
+	<!-- <div class="row">
 		<div class="col-xs-12">
 			<% if @entry.errors.any? %>
 			<div class="error">
@@ -16,7 +16,7 @@
 			</div>
 			<% end %>
 		</div>
-	</div>
+	</div> -->
 
 	<div class="row">
 		<br>
@@ -38,6 +38,14 @@
 		<div class="col-sm-12">
 			<p>
 				<%= f.text_area :content, placeholder: "Enter content here, using HTML tags to format the text." %>
+			</p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-12" style="display: none;">
+			<p>
+				<%= f.text_field :user %>
 			</p>
 		</div>
 	</div>

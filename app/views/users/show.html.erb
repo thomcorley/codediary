@@ -1,21 +1,65 @@
 <div class= "container-fluid">
 
-	<div class="user-profile">
+  <div class="row">
+    <div class="col-xs-12">
+      <h4>
+        Hello, <strong><%= @user.first_name %> <%= @user.last_name %></strong>.
+      </h4>
+    </div>
+  </div>
 
-		<div class="row">
-			<div class="col-xs-12">
-        <%= @user.first_name %>
-        <%= @user.last_name %>
-			</div>
+  <br>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <p>
+        You currently have <strong>20</strong> diary entries, the most recent of which was <strong>yesterday</strong>.
+      </p>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="row">
+    <div class="col-xs-12 search-form">
+      <form action="/index_by_tag" method="get">
+        <input type="text" name="tag" placeholder="search by tag">
+        <button type="submit" class="btn btn-primary search-go">
+          <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+        </button><br>
+      </form>
     </div>
 
-    <div class="row">
-			<div class="col-xs-12">
-        <%= @user.email_address  %>
-			</div>
+    <div class="col-xs-12 search-error">
+      <p><%= @nonexistent_tag_error %></p>
     </div>
 
-		</div>
-	</div>
+    <div class="col-xs-12 search-form">
+      <form action="/index_by_date" method="get">
+        <input type="text" name="selected_date" placeholder="search by YYYY-MM-DD">
+        <button type="submit" class="btn btn-primary search-go">
+          <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+        </button><br>
+      </form>
+    </div>
+
+    <div class="col-xs-12 search-error">
+      <p><%= @nonexistent_date_error %></p>
+    </div>
+
+    <div class="col-xs-12 search-form">
+      <form action="/index_by_keyword" method="get">
+        <input type="text" name="keyword" placeholder="search by keyword">
+        <button type="submit" class="btn btn-primary search-go">
+          <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+        </button>
+      </form>
+    </div>
+
+    <div class="col-xs-12 search-error">
+      <p><%= @nonexistent_keyword_error %></p>
+    </div>
+
+  </div>
 
 </div>
