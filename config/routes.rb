@@ -2,10 +2,9 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users do
   	resources :entries
+    resources :searches
   end
-
-  resources :searches
-
+  
   get "/signin" => "users#signin"
   get "/intro" => "users#intro"
   get "/index_by_keyword" => "searches#index_by_keyword"

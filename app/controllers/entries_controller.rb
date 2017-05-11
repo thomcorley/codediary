@@ -51,7 +51,6 @@ class EntriesController < ApplicationController
     end
   end
 
-  ## TODO: fix this action
   def destroy
     @user = User.find(params[:user_id])
     @entry = @user.entries.find(params[:id])
