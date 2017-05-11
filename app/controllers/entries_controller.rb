@@ -41,22 +41,26 @@ class EntriesController < ApplicationController
   end
 
   def update
-    @entry = Entry.find(params[:id])
+    @user = User.find(params[:user_id])
+    @entry = @user.entries.find(params[:id])
 
     if @entry.update(entry_params)
-      redirect_to @entry
+      redirect_to user_entry_path(@user, @entry)
     else
       render :edit
     end
   end
 
+  ## TODO: fix this action
   def destroy
-    @entry = Entry.find(params[:id])
+    @user = User.find(params[:user_id])
+    @entry = @user.entries.find(params[:id])
     @entry.destroy
 
-    redirect_to :index
+    redirect_to user_entries_path
   end
 
+  ## TODO: fix this action
   def dates
     entries = Entry.all
     $dates_array = Array.new
@@ -66,6 +70,7 @@ class EntriesController < ApplicationController
     $dates_array.uniq
   end
 
+  ## TODO: fix this action
   def index_by_tag
     entries = Entry.all
     @selected_entries = Array.new
@@ -77,6 +82,7 @@ class EntriesController < ApplicationController
     @selected_tag = params[:tag]
   end
 
+  ## TODO: fix this action
   def index_by_date
     entries = Entry.all
     @selected_entries = Array.new
@@ -89,6 +95,7 @@ class EntriesController < ApplicationController
     @selected_entries
   end
 
+  ## TODO: fix this action
   def index_by_keyword
     entries = Entry.all
     @selected_entries = Array.new
@@ -103,6 +110,7 @@ class EntriesController < ApplicationController
     logger.debug "hello"
   end
 
+  ## TODO: fix this action
   def tags
     entries = Entry.all
     # Create a list of all the tags, as a String
