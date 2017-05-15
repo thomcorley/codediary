@@ -8,4 +8,7 @@ class User < ApplicationRecord
   validates :first_name, uniqueness: true
   validates :last_name, uniqueness: true
   validates :email_address, uniqueness: true
+
+  has_many :searches
+  
 end

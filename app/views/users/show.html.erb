@@ -24,6 +24,7 @@
     <div class="col-xs-12 search-form">
       <form action="/index_by_tag" method="get">
         <input type="text" name="tag" placeholder="search by tag">
+        <input type="hidden" name="user_id" value="<%= @user.id %>">
         <button type="submit" class="btn btn-primary search-go">
           <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
         </button><br>
@@ -37,6 +38,7 @@
     <div class="col-xs-12 search-form">
       <form action="/index_by_date" method="get">
         <input type="text" name="selected_date" placeholder="search by YYYY-MM-DD">
+        <input type="hidden" name="user_id" value="<%= @user.id %>">
         <button type="submit" class="btn btn-primary search-go">
           <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
         </button><br>
@@ -50,6 +52,7 @@
     <div class="col-xs-12 search-form">
       <form action="/index_by_keyword" method="get">
         <input type="text" name="keyword" placeholder="search by keyword">
+        <input type="hidden" name="user_id" value="<%= @user.id %>">
         <button type="submit" class="btn btn-primary search-go">
           <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
         </button>

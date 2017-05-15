@@ -1,6 +1,17 @@
 class SearchesController < ApplicationController
   require "~/www/codeDiary/app/services/collect_errors_service.rb"
 
+  def index
+
+  end
+
+  def create
+    @user = User.find(params[:user_id])
+    @search = @user.search.new(params)
+  end
+
+
+
   #TODO fix this action
 	def tags
 		entries = Entry.all
@@ -23,10 +34,9 @@ class SearchesController < ApplicationController
 		$dates_array.uniq
 	end
 
-  #TODO fix this action
 	def index_by_tag
-    user = User.find(params[:user_id])
-    entries = user.entries.all
+    @user = User.find(params[:user_id])
+    entries = @user.entries.all
 		@selected_entries = Array.new
 
 		entries.each do |entry|
@@ -42,10 +52,11 @@ class SearchesController < ApplicationController
 		p Entry.where(title: "Formatting Date and Time")
 	end
 
-  #TODO fix this action
 	def index_by_date
-		entries = Entry.all
+    @user = User.find(params[:user_id])
+		entries = @user.entries.all
 		@selected_entries = Array.new
+
 		@selected_date = params[:selected_date]
 		@nonexistent_date_error = String.new
 
@@ -65,7 +76,9 @@ class SearchesController < ApplicationController
 	end
 
 	def index_by_keyword
-		entries = Entry.all
+    @user = User.find(params[:user_id])
+		entries = @user.entries.all
+
 		@selected_entries = Array.new
 		@keyword = params[:keyword]
 
