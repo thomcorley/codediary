@@ -34,7 +34,6 @@
  	font-family: 'Open Sans', sans-serif;
  	color: #2F323B;
  	text-align: justify;
-
  }
  .banner-header {
 	max-width: 100%;
@@ -45,9 +44,16 @@
 	display: block;
 	position: flex;
 	margin: 0 auto 0 auto;
-	padding: 0 15px 20px 15px;
+	padding: 20px 15px 20px 15px;
+  border: 1px solid lightgrey;
+  border-radius: 10px;
+  color: #2F323B;
+  background-color: #fff;
  }
- .codediary-header {
+ .welcome-message {
+   padding: 0 40px 0 40px;
+ }
+ /*.codediary-header {
  	background-color: #fff;
  	width: 100%;
  	max-width: 700px;
@@ -55,6 +61,21 @@
 	padding: 0 50px 20px 50px;
 	border: 1px solid lightgrey;
 	border-radius: 10px;
+ }*/
+ .code-diary-header {
+   width: 100%;
+   max-width: 600px;
+   margin: 0 auto 0 auto;
+ 	 padding: 10px 50px 20px 50px;
+   text-align: left;
+   font-family: 'Proza Libre', sans-serif;
+   color: #337ab7;
+ }
+ .welcome-header {
+   text-align: center;
+   margin-top: 200px;
+   color: #337ab7;
+   font-family: 'Proza Libre', sans-serif;
  }
  .codediary-footer {
 	background-color: #fff;
@@ -160,7 +181,7 @@ textarea {
 	text-align: left;
 }
 .intro {
-	margin-left: 5px;
+  text-align: center;
 }
 .selected-tag {
 	margin: 0 0 25px 5px;

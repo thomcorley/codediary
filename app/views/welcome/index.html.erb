@@ -1,4 +1,13 @@
-<h2>Hello World</h2>
-<p>
-  The time is now: <%= Time.now %>
-</p>
+<div class="container-fluid">
+
+  <div class="row intro">
+    <div class="col-xs-12">
+      <h4>
+        <a href="https://github.com/login/oauth/authorize?client_id=<%= @client_id %>&redirect_uri=<%= @redirect_uri %>&state=<%= @state %>&allow_signup=<% @allow_signup %>" title="signin" target="_blank">
+          Sign in with Github
+        </a>
+      </h4>
+    </div>
+  </div>
+
+</div>

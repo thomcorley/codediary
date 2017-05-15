@@ -6,20 +6,9 @@ class UsersController < ApplicationController
   require "rack"
   require "pry"
 
-  # def index
-  #   p params
-  # end
-  #
-  # def new
-  #
-  # end
-  #
-  # def create
-  #
-  # end
-
   def show
     @user = User.find(params[:id])
+
   end
 
   def intro
@@ -77,31 +66,5 @@ class UsersController < ApplicationController
 
     end
 
-    end
-
-
-  # private
-  # def user_params
-  #   params.require(:user).permit(:first_name, :last_name, :email)
-  # end
-
-	def signin
-		client_id = "893363579239-rn43pc0jlnnad5gmgu24ci0uhvvbo9sp.apps.googleusercontent.com"
-		client_secret = "tTNRZcW1US33GDfIUhOpMGQo"
-
-
-		params = {
-			:client_id => client_id,
-			:response_type => "code",
-			:scope => "openid email profile",
-			:redirect_uri => "http://localhost:3000/home",
-			:state => "another_password",
-			:login_hint => "thomcorley@gmail.com"
-		}
-
-		base_uri = "https://accounts.google.com/o/oauth2/v2/auth?"
-		query = params.to_query
-		$uri = URI(base_uri + query)
-	end
-
+  end
 end

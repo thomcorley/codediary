@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   	resources :entries
     resources :searches
   end
-  
+
   get "/signin" => "users#signin"
   get "/intro" => "users#intro"
   get "/index_by_keyword" => "searches#index_by_keyword"
@@ -16,6 +16,6 @@ Rails.application.routes.draw do
   get "/new" => "entries#new"
   get "/signin_with_github" => "users#signin_with_github"
 
-  root 'users#intro'
+  root 'welcome#index'
 
 end
