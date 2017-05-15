@@ -52,19 +52,17 @@ class UsersController < ApplicationController
         "last_name" => name.split[1],
         "email_address" => res["email"]
       }
-
-      @user = User.new(user_params)
-
-      if @user.save
-        id = @user.id
-        redirect_to "/users/#{id}"
-      else
-        user = User.where(email_address: @user.email_address).take
-        id = user.id
-        redirect_to "/users/#{id}"
-      end
-
     end
+
+
+    p @user = User.new(user_params)
+
+    if User.where(:id => @user.id).exists?
+      redirect_to "/users/#{@user.id}"
+    elsif @user.save
+      redirect_to "/users/#{@user.id}"
+    end
+
 
   end
 end

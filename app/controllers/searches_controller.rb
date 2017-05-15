@@ -68,10 +68,10 @@ class SearchesController < ApplicationController
 
 		if @selected_date.to_date.future?
 			@nonexistent_date_error = "Date cannot be in the future"
-			render "entries/home"
+			render user_path
 		elsif @selected_entries.none?
 			@nonexistent_date_error = "No entries for that date"
-			render "entries/home"
+			render user_path
 		end
 	end
 
