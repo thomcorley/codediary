@@ -5,20 +5,21 @@ class UsersController < ApplicationController
   require "awesome_print"
   require "rack"
   require "pry"
+  require "date"
 
   def show
     @user = User.find(params[:id])
 
-    now = Time.now
+    now = DateTime.now
 
-    if Range.new(Time.new("17:00"), Time.new("00:00")).cover? now
+    if now.between?(DateTime.parse("17:00"), DateTime.parse("23:59"))
       @greeting = "Good evening"
-    elsif Range.new(Time.new("00:00"), Time.new("12:00")).cover? now
+    elsif now.between?(DateTime.parse("00:00"), DateTime.parse("12:00"))
       @greeting = "Good morning"
-    else Range.new(Time.new("12:00"), Time.new("17:00")).cover? now
+    else now.between?(DateTime.parse("12:00"), DateTime.parse("17:00"))
       @greeting = "Good afternoon"
     end
-    
+
   end
 
   def intro
