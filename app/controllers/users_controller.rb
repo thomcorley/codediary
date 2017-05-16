@@ -9,14 +9,22 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
 
+    now = Time.now
+
+    if Range.new(Time.new("17:00"), Time.new("00:00")).cover? now
+      @greeting = "Good evening"
+    elsif Range.new(Time.new("00:00"), Time.new("12:00")).cover? now
+      @greeting = "Good morning"
+    else Range.new(Time.new("12:00"), Time.new("17:00")).cover? now
+      @greeting = "Good afternoon"
+    end
+    
   end
 
   def intro
     @client_id = "85887f1a18dd3c5d43fe"
     @client_secret = "28d5ed3ad4f614802ed419322c487e2d3329b342"
     @redirect_uri = "http://localhost:3000/intro"
-    # SecureRandom.hex
-    # SecureRandom.base64
     @state = "6b41778eec044a860b93f204e3418ded"
     @allow_signup = false
 
@@ -56,7 +64,7 @@ class UsersController < ApplicationController
 
     email = user_params["email_address"]
 
-    ap @user = User.new(user_params)
+    @user = User.new(user_params)
 
     if User.where(email_address: email).exists?
       user = User.find_by_email_address email
