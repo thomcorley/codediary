@@ -45,8 +45,8 @@ class SearchesController < ApplicationController
 			end
 		end
 		unless @selected_entries.any?
-			@nonexistent_tag_error = "Tag does not exist"
-			render "entries/home"
+			@error = "Tag does not exist"
+			redirect_to user_path(@user, error: @error)
 		end
 		@selected_tag = params[:tag]
 		p Entry.where(title: "Formatting Date and Time")
@@ -58,7 +58,7 @@ class SearchesController < ApplicationController
 		@selected_entries = Array.new
 
 		@selected_date = params[:selected_date]
-		@nonexistent_date_error = String.new
+		@error = String.new
 
 		entries.each do |entry|
 			if @selected_date == entry.created_at.strftime("%Y-%m-%d")
@@ -67,11 +67,11 @@ class SearchesController < ApplicationController
 		end
 
 		if @selected_date.to_date.future?
-			@nonexistent_date_error = "Date cannot be in the future"
-			render user_path
+			@error = "Date cannot be in the future"
+			redirect_to user_path(@user, error: @error)
 		elsif @selected_entries.none?
-			@nonexistent_date_error = "No entries for that date"
-			render user_path
+			@error = "No entries for that date"
+			redirect_to user_path(@user, error: @error)
 		end
 	end
 
@@ -91,8 +91,8 @@ class SearchesController < ApplicationController
 		end
 
 		if @selected_entries.none?
-			@nonexistent_keyword_error = "No entries available for that keyword"
-			render "entries/home"
+			@error = "No entries available for that keyword"
+			render user_path(@user, error: @error)
 		end
 	end
 end
