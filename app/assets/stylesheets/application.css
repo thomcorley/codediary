@@ -51,7 +51,7 @@
   background-color: #fff;
  }
  .welcome-message {
-   margin: 0 10px 0 10px;
+   margin: 20px 10px 0 10px;
  }
  /*.codediary-header {
  	background-color: #fff;
@@ -201,7 +201,17 @@ textarea {
 	display: block;
 }
 .links-heading {
-	padding-bottom: 15px;
+	padding: 4px 0 4px 0;
+  margin: 0 10px 0 10px;
+  /*border: 1px solid lightgrey;*/
+  border-radius: 3px;
+  background-color: rgba(63, 68, 72, 0.03)
+}
+.links-heading a:hover {
+  color: #9ACD32;
+}
+.links-heading a {
+  color: #337ab7;
 }
 .error, .search-error{
 	color: red;
