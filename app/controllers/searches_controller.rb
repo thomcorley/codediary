@@ -1,5 +1,4 @@
 class SearchesController < ApplicationController
-  require "~/www/codeDiary/app/services/collect_errors_service.rb"
 
   def index
 
