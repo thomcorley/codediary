@@ -5,7 +5,7 @@
       <%= @greeting %>, <strong><%= @user.first_name %></strong>.
     </p>
     <p>
-      You currently have <strong>20</strong> diary entries, the most recent of which was <strong>yesterday</strong>.
+      Welcome to your codeDiary. You currently have <%= pluralize(@entries.count, "diary entry") %>.
     </p>
   </div>
 </div>
