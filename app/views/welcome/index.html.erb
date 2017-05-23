@@ -1,6 +1,6 @@
 <div class="container-fluid">
 
-  <div class="row intro">
+  <!-- <div class="row intro">
     <div class="col-xs-12">
       <h4>
         <a href="https://github.com/login/oauth/authorize?client_id=<%= @client_id %>&redirect_uri=<%= @redirect_uri %>&state=<%= @state %>&allow_signup=<% @allow_signup %>" title="signin" target="_blank">
@@ -8,14 +8,16 @@
         </a>
       </h4>
     </div>
-  </div>
+  </div> -->
 
   <div class="row intro">
     <div class="col-xs-12">
       <h4>
+
         <a href="https://accounts.google.com/o/oauth2/v2/auth?client_id=<%= @client_id %>&response_type=code&redirect_uri=<%= @redirect_uri %>&state=state&scope=openid email profile" target="_blank">
-          Sign in with Google
+        Signin with Google<!-- <img src="btn_google_signin_light_normal_web.png" alt="Sign in with Google"> -->
         </a>
+
       </h4>
     </div>
   </div>

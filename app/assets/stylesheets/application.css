@@ -155,6 +155,9 @@ input[type=submit] {
     border: 1px solid lightgrey;
     border-radius: 6px;
 }
+button[type=button] {
+  background-image: url(/app/assets/images/btn_google_signin_light_normal_web.png);
+}
 .form {
     text-align: left;
     padding: 0 15px 0 15px;

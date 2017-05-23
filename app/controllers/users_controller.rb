@@ -58,7 +58,6 @@ class UsersController < ApplicationController
 
     unless res["name"].nil?
       name = res["name"]
-
       user_params = {
         "first_name" => name.split[0],
         "last_name" => name.split[1],
@@ -101,8 +100,26 @@ class UsersController < ApplicationController
     jwt_array = jwt.split(".")
     jwt_body = jwt_array[1]
     jwt_parsed = Base64.decode64(jwt_body)
-    ap decoded = JSON.parse(jwt_parsed)
+    decoded = JSON.parse(jwt_parsed)
 
-    render layout: false
+    name = decoded["name"]
+    email = decoded["email"]
+    
+    user_params = {
+      "first_name" => name.split[0],
+      "last_name" => name.split[1],
+      "email_address" => decoded["email"]
+    }
+
+    @user = User.new(user_params)
+
+    if User.where(email_address: email).exists?
+      user = User.find_by_email_address email
+      redirect_to "/users/#{user.id}"
+    elsif
+      @user.save
+      redirect_to "/users/#{@user.id}"
+    end
+
   end
 end
