@@ -6,6 +6,8 @@ class UsersController < ApplicationController
   require "rack"
   require "pry"
   require "date"
+  require "base64"
+  require "json"
 
   def show
     @user = User.find(params[:id])
@@ -83,19 +85,10 @@ class UsersController < ApplicationController
     @client_secret = "R-Yvu-RIXpQ3HT0EKbQJ-RMl"
     @redirect_uri = "http://localhost:3000/intro"
 
-    res = HTTParty.get("https://accounts.google.com/o/oauth2/v2/auth",
-      query: {
-        client_id: @client_id,
-        client_secret: @client_secret,
-        scope: "email",
-        redirect_uri: @redirect_uri,
-        state: "state",
-      })
-
-    code = res["code"]
+    ap code = params["code"]
 
     ap res = HTTParty.post("https://www.googleapis.com/oauth2/v4/token",
-      query: {
+      body: {
         code: code,
         client_id: @client_id,
         client_secret: @client_secret,
@@ -104,7 +97,12 @@ class UsersController < ApplicationController
       }
     )
 
+    jwt = res["id_token"]
+    jwt_array = jwt.split(".")
+    jwt_body = jwt_array[1]
+    jwt_parsed = Base64.decode64(jwt_body)
+    ap decoded = JSON.parse(jwt_parsed)
 
-
+    render layout: false
   end
 end
