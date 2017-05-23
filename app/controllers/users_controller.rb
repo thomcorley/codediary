@@ -76,38 +76,33 @@ class UsersController < ApplicationController
       redirect_to "/users/#{@user.id}"
     end
 
-    def signin_with_google
-      @client_id = "794263904785-vea01ahfrk7glbtclgmu384tqvbsid5d.apps.googleusercontent.com"
-      @client_secret = "R-Yvu-RIXpQ3HT0EKbQJ-RMl"
-      @redirect_uri = "http://localhost:3000/intro"
+  end
 
-      ap res HTTParty.get("https://accounts.google.com/o/oauth2/v2/auth",
-        query: {
-          client_id: @client_id,
-          client_secret: @client_secret,
-          scope: "email",
-          redirect_uri: @redirect_uri,
-          state: "state",
-        })
+  def signin_with_google
+    @client_id = "794263904785-vea01ahfrk7glbtclgmu384tqvbsid5d.apps.googleusercontent.com"
+    @client_secret = "R-Yvu-RIXpQ3HT0EKbQJ-RMl"
+    @redirect_uri = "http://localhost:3000/intro"
 
+    res = HTTParty.get("https://accounts.google.com/o/oauth2/v2/auth",
+      query: {
+        client_id: @client_id,
+        client_secret: @client_secret,
+        scope: "email",
+        redirect_uri: @redirect_uri,
+        state: "state",
+      })
 
-    end
+    code = res["code"]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    ap res = HTTParty.post("https://www.googleapis.com/oauth2/v4/token",
+      query: {
+        code: code,
+        client_id: @client_id,
+        client_secret: @client_secret,
+        redirect_uri: @redirect_uri,
+        grant_type: "authorization_code"
+      }
+    )
 
 
 
