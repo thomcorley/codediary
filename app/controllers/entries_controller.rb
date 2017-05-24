@@ -5,6 +5,7 @@ class EntriesController < ApplicationController
   require 'json'
   require 'base64'
   require 'ap'
+  require "redcarpet"
 
   def index
     @user = User.find(params[:user_id])
@@ -29,9 +30,15 @@ class EntriesController < ApplicationController
   end
 
   def create
+    renderer = Redcarpet::Render::HTML.new
+    markdown = Redcarpet::Markdown.new(renderer)
+
     @user = User.find(params[:user_id])
 
     @entry = @user.entries.create(entry_params)
+    @entry.content = markdown.render(@entry.content)
+    @entry.save
+    binding.pry
 
     if @entry.save
       redirect_to user_entry_path(@user, @entry)
