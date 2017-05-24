@@ -82,7 +82,7 @@ class UsersController < ApplicationController
   def signin_with_google
     @client_id = "794263904785-vea01ahfrk7glbtclgmu384tqvbsid5d.apps.googleusercontent.com"
     @client_secret = "R-Yvu-RIXpQ3HT0EKbQJ-RMl"
-    @redirect_uri = "http://localhost:3000/intro"
+    @redirect_uri = "http://codediary.co/intro"
 
     ap code = params["code"]
 
@@ -104,7 +104,7 @@ class UsersController < ApplicationController
 
     name = decoded["name"]
     email = decoded["email"]
-    
+
     user_params = {
       "first_name" => name.split[0],
       "last_name" => name.split[1],
