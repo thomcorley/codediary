@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   end
 
   get "/signin" => "users#signin"
-  get "/intro" => "users#intro"
+  get "/intro" => "users#signin_with_google"
   get "/index_by_keyword" => "searches#index_by_keyword"
   get "/index_by_date" => "searches#index_by_date"
   get "/index_by_tag" => "searches#index_by_tag"
