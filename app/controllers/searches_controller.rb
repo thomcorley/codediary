@@ -67,7 +67,7 @@ class SearchesController < ApplicationController
 
 		if @selected_entries.none?
 			@error = "No entries available for that keyword"
-			render user_path(@user, keyword_error: @error)
+			redirect_to user_path(@user, keyword_error: @error)
 		end
 	end
 end
