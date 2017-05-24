@@ -25,7 +25,6 @@ class UsersController < ApplicationController
 
   end
 
-<<<<<<< HEAD
   def intro
     @client_id = "85887f1a18dd3c5d43fe"
     @client_secret = "28d5ed3ad4f614802ed419322c487e2d3329b342"
@@ -64,7 +63,6 @@ class UsersController < ApplicationController
         "first_name" => name.split[0],
         "last_name" => name.split[1],
         "email_address" => res["email"]
-=======
   # def intro
   #   @client_id = "85887f1a18dd3c5d43fe"
   #   @client_secret = "28d5ed3ad4f614802ed419322c487e2d3329b342"
@@ -137,7 +135,6 @@ class UsersController < ApplicationController
         client_secret: @client_secret,
         redirect_uri: @redirect_uri,
         grant_type: "authorization_code"
->>>>>>> master
       }
     )
 
