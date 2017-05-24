@@ -46,7 +46,7 @@ class SearchesController < ApplicationController
 			redirect_to user_path(@user, date_error: @error)
 		elsif @selected_entries.none?
 			@error = "No entries for that date"
-			redirect_to user_path(@user, error: @error)
+			redirect_to user_path(@user, date_error: @error)
 		end
 	end
 
