@@ -9,30 +9,6 @@ class SearchesController < ApplicationController
     @search = @user.search.new(params)
   end
 
-
-
-  #TODO fix this action
-	def tags
-		entries = Entry.all
-		# Create a list of all the tags, as a String
-		tags_list = String.new
-		entries.each do |entry|
-			tags_list << entry.tags + " "
-		end
-		# Convert the String to a global array, removing the duplicate elements
-		$tags_array = tags_list.split.uniq
-	end
-
-  #TODO fix this action
-	def dates
-		entries = Entry.all
-		$dates_array = Array.new
-		entries.each do |entry|
-			$dates_array << entry.created_at.strftime("%Y-%m-%d")
-		end
-		$dates_array.uniq
-	end
-
 	def index_by_tag
     @user = User.find(params[:user_id])
     entries = @user.entries.all
