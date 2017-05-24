@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   require "date"
   require "base64"
   require "json"
+  require "redcarpet"
 
   def show
     @user = User.find(params[:id])
@@ -22,6 +23,11 @@ class UsersController < ApplicationController
     else now.between?(DateTime.parse("12:00"), DateTime.parse("17:00"))
       @greeting = "Good afternoon"
     end
+
+    renderer = Redcarpet::Render::HTML.new
+    markdown = Redcarpet::Markdown.new(renderer)
+
+    @some_text = markdown.render("### Heading, *emphasis* \n---").html_safe
 
   end
 
