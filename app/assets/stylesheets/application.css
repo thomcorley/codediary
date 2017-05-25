@@ -17,12 +17,10 @@
 
 
  hr {
- 	border-width: 1px;
  	display: block;
- 	border-top: 1px solid #888888;
- 	margin: 0;
+ 	border-top: 2px solid rgba(211, 211, 211, 0.5);
+ 	margin: 10px 0 10px 0;
  }
-
  a:hover {
 	text-decoration: none;
  }
@@ -34,6 +32,11 @@
  	font-family: 'Open Sans', sans-serif;
  	color: #2F323B;
  	text-align: justify;
+ }
+ pre {
+   background-color: #F9F2F4;
+   color: #C7254E;
+   border: none;
  }
  .banner-header {
 	max-width: 100%;
@@ -154,9 +157,6 @@ input[type=submit] {
     margin-top: 2px;
     border: 1px solid lightgrey;
     border-radius: 6px;
-}
-button[type=button] {
-  background-image: url(/app/assets/images/btn_google_signin_light_normal_web.png);
 }
 .form {
     text-align: left;
