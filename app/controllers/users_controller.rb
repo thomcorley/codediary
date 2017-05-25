@@ -8,11 +8,35 @@ class UsersController < ApplicationController
   require "date"
   require "base64"
   require "json"
+  require "redcarpet"
+  require "google_signin_service"
+
+  def signin
+    user_params = GoogleSigninService.new.get_user_params(params["code"])
+    email = user_params["email_address"]
+    @user = User.new(user_params)
+
+    if User.where(email_address: email).exists?
+      user = User.find_by_email_address email
+      redirect_to "/users/#{user.id}"
+    elsif
+      @user.save
+      redirect_to "/users/#{@user.id}"
+    end
+  end
 
   def show
     @user = User.find(params[:id])
     @entries = @user.entries
+    @greeting = get_greeting
+    renderer = Redcarpet::Render::HTML.new
+    markdown = Redcarpet::Markdown.new(renderer)
 
+    @some_text = markdown.render("### Heading, *emphasis* \n---").html_safe
+  end
+
+  private
+  def get_greeting
     now = DateTime.now
 
     if now.between?(DateTime.parse("17:00"), DateTime.parse("23:59"))
@@ -23,8 +47,10 @@ class UsersController < ApplicationController
       @greeting = "Good afternoon"
     end
 
+    @greeting
   end
 
+<<<<<<< HEAD
   def signin_with_google
     # # Signs in using the Google API. Returns an array of User params
     # signin_with_google
@@ -35,41 +61,7 @@ class UsersController < ApplicationController
     @redirect_uri = "#{ENV["HOST"]}/intro"
 
     ap code = params["code"]
+=======
+>>>>>>> refactoring
 
-    ap res = HTTParty.post("https://www.googleapis.com/oauth2/v4/token",
-      body: {
-        code: code,
-        client_id: @client_id,
-        client_secret: @client_secret,
-        redirect_uri: @redirect_uri,
-        grant_type: "authorization_code"
-      }
-    )
-
-    jwt = res["id_token"]
-    jwt_array = jwt.split(".")
-    jwt_body = jwt_array[1]
-    jwt_parsed = Base64.decode64(jwt_body)
-    decoded = JSON.parse(jwt_parsed)
-
-    name = decoded["name"]
-    email = decoded["email"]
-
-    user_params = {
-      "first_name" => name.split[0],
-      "last_name" => name.split[1],
-      "email_address" => decoded["email"]
-    }
-
-    @user = User.new(user_params)
-
-    if User.where(email_address: email).exists?
-      user = User.find_by_email_address email
-      redirect_to "/users/#{user.id}"
-    elsif
-      @user.save
-      redirect_to "/users/#{@user.id}"
-    end
-
-  end
 end
