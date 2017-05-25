@@ -30,15 +30,11 @@ class EntriesController < ApplicationController
   end
 
   def create
-    renderer = Redcarpet::Render::HTML.new
-    markdown = Redcarpet::Markdown.new(renderer)
-
+    markdown = markdown_generator
     @user = User.find(params[:user_id])
 
     @entry = @user.entries.create(entry_params)
-    @entry.content = markdown.render(@entry.content)
-    @entry.save
-    binding.pry
+    convert_content_to_markdown(@entry)
 
     if @entry.save
       redirect_to user_entry_path(@user, @entry)
@@ -52,6 +48,7 @@ class EntriesController < ApplicationController
     @entry = @user.entries.find(params[:id])
 
     if @entry.update(entry_params)
+      convert_content_to_markdown(@entry)
       redirect_to user_entry_path(@user, @entry)
     else
       render :edit
@@ -139,5 +136,18 @@ class EntriesController < ApplicationController
   private
   def entry_params
     params.require(:entry).permit(:title, :content, :tags)
+  end
+
+  private
+  def markdown_generator
+    renderer = Redcarpet::Render::HTML.new
+    markdown = Redcarpet::Markdown.new(renderer)
+  end
+
+  private
+  def convert_content_to_markdown(entry)
+    markdown = markdown_generator
+    @entry.content = markdown.render(@entry.content)
+    @entry.save
   end
 end

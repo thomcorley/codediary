@@ -16,7 +16,6 @@ class UsersController < ApplicationController
     email = user_params["email_address"]
     @user = User.new(user_params)
 
-
     if User.where(email_address: email).exists?
       user = User.find_by_email_address email
       redirect_to "/users/#{user.id}"
@@ -29,6 +28,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @entries = @user.entries
+    @greeting = get_greeting
     renderer = Redcarpet::Render::HTML.new
     markdown = Redcarpet::Markdown.new(renderer)
 
