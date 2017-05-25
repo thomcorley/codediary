@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   end
 
   get "/signin" => "users#signin"
-  get "/intro" => "users#signin_with_google"
+  get "/intro" => "users#signin"
   get "/index_by_keyword" => "searches#index_by_keyword"
   get "/index_by_date" => "searches#index_by_date"
   get "/index_by_tag" => "searches#index_by_tag"
@@ -14,7 +14,6 @@ Rails.application.routes.draw do
   get "/home" => "entries#home"
   get '/index' => "entries#index"
   get "/new" => "entries#new"
-  get "/signin_with_github" => "users#signin_with_github"
 
   root 'welcome#index'
 
