@@ -50,18 +50,4 @@ class UsersController < ApplicationController
     @greeting
   end
 
-<<<<<<< HEAD
-  def signin_with_google
-    # # Signs in using the Google API. Returns an array of User params
-    # signin_with_google
-
-
-    @client_id = "794263904785-vea01ahfrk7glbtclgmu384tqvbsid5d.apps.googleusercontent.com"
-    @client_secret = "R-Yvu-RIXpQ3HT0EKbQJ-RMl"
-    @redirect_uri = "#{ENV["HOST"]}/intro"
-
-    ap code = params["code"]
-=======
->>>>>>> refactoring
-
 end
