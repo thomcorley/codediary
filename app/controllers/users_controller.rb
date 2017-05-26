@@ -30,10 +30,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @entries = @user.entries
     @greeting = get_greeting
-    renderer = Redcarpet::Render::HTML.new(prettify: true)
-    markdown = Redcarpet::Markdown.new(renderer)
-
-    @some_text = markdown.render("### Heading, *emphasis* \n---").html_safe
   end
 
   private
