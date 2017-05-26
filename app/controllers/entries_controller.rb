@@ -141,7 +141,7 @@ class EntriesController < ApplicationController
   private
   def markdown_generator
     renderer = Redcarpet::Render::HTML.new
-    markdown = Redcarpet::Markdown.new(renderer)
+    markdown = Redcarpet::Markdown.new(renderer, no_intra_emphasis: true)
   end
 
   private
