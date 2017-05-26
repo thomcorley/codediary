@@ -34,9 +34,13 @@
  	text-align: justify;
  }
  pre {
-   background-color: #F9F2F4;
-   color: #C7254E;
+   background-color: rgba(211, 211, 211, 0.2);
+   color: rgba(77, 77, 77, 0.8);
    border: none;
+ }
+ code {
+   background-color: rgba(211, 211, 211, 0.2);
+   color: rgba(77, 77, 77, 0.8);
  }
  .banner-header {
 	max-width: 100%;

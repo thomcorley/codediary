@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   require "json"
   require "redcarpet"
   require "google_signin_service"
+  require "markdown_service"
 
   def signin
     user_params = GoogleSigninService.new.get_user_params(params["code"])
@@ -29,7 +30,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @entries = @user.entries
     @greeting = get_greeting
-    renderer = Redcarpet::Render::HTML.new
+    renderer = Redcarpet::Render::HTML.new(prettify: true)
     markdown = Redcarpet::Markdown.new(renderer)
 
     @some_text = markdown.render("### Heading, *emphasis* \n---").html_safe
