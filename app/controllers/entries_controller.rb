@@ -5,7 +5,7 @@ class EntriesController < ApplicationController
   require 'json'
   require 'base64'
   require 'ap'
-  require "redcarpet"
+  require 'markdown_service'
 
   def index
     @user = User.find(params[:user_id])
@@ -30,12 +30,11 @@ class EntriesController < ApplicationController
   end
 
   def create
-    markdown = markdown_generator
     @user = User.find(params[:user_id])
 
     @entry = @user.entries.create(entry_params)
-    convert_content_to_markdown(@entry)
-
+    @entry.content = MarkdownService.new.render(@entry.content)
+    binding.pry
     if @entry.save
       redirect_to user_entry_path(@user, @entry)
     else
@@ -123,14 +122,6 @@ class EntriesController < ApplicationController
     end
     # Convert the String to a global array, removing the duplicate elements
     $tags_array = tags_list.split.uniq
-  end
-
-  def home
-
-  end
-
-  def intro
-
   end
 
   private
