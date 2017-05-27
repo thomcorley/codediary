@@ -9,7 +9,7 @@ class SearchesController < ApplicationController
     @search = @user.search.new(params)
   end
 
-	def index_by_tag
+	def by_tag
     @user = User.find(params[:user_id])
     entries = @user.entries.all
 		@selected_entries = Array.new
@@ -24,10 +24,10 @@ class SearchesController < ApplicationController
 			redirect_to user_path(@user, tag_error: @error)
 		end
 		@selected_tag = params[:tag]
-		p Entry.where(title: "Formatting Date and Time")
+		Entry.where(title: "Formatting Date and Time")
 	end
 
-	def index_by_date
+	def by_date
     @user = User.find(params[:user_id])
 		entries = @user.entries.all
 		@selected_entries = Array.new
@@ -50,7 +50,7 @@ class SearchesController < ApplicationController
 		end
 	end
 
-	def index_by_keyword
+	def by_keyword
     @user = User.find(params[:user_id])
 		entries = @user.entries.all
 

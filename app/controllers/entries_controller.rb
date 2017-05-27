@@ -34,7 +34,6 @@ class EntriesController < ApplicationController
 
     @entry = @user.entries.create(entry_params)
     @entry.content = MarkdownService.new.render(@entry.content)
-    binding.pry
     if @entry.save
       redirect_to user_entry_path(@user, @entry)
     else
@@ -47,7 +46,8 @@ class EntriesController < ApplicationController
     @entry = @user.entries.find(params[:id])
 
     if @entry.update(entry_params)
-      convert_content_to_markdown(@entry)
+      @entry.content = MarkdownService.new.render(@entry.content)
+      @entry.save
       redirect_to user_entry_path(@user, @entry)
     else
       render :edit
@@ -127,18 +127,5 @@ class EntriesController < ApplicationController
   private
   def entry_params
     params.require(:entry).permit(:title, :content, :tags)
-  end
-
-  private
-  def markdown_generator
-    renderer = Redcarpet::Render::HTML.new
-    markdown = Redcarpet::Markdown.new(renderer, no_intra_emphasis: true)
-  end
-
-  private
-  def convert_content_to_markdown(entry)
-    markdown = markdown_generator
-    @entry.content = markdown.render(@entry.content)
-    @entry.save
   end
 end

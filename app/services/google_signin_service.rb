@@ -33,5 +33,4 @@ class GoogleSigninService
     }
 
     end
-
   end

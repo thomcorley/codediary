@@ -13,7 +13,7 @@
 		<div class="row tags">
 			<% @tags.each do |tag| %>
 			<div class="col-xs-2 tag">
-				<%= link_to tag.upcase, {controller: "searches", action: "index_by_tag", tag: tag.downcase}, :style => "color: #fff" %>
+				<%= link_to tag.upcase, {controller: "searches", action: "by_tag", tag: tag.downcase}, :style => "color: #fff" %>
 			</div>
 			<% end %>
 		</div>
