@@ -42,6 +42,8 @@ Rails.application.configure do
   # number of complex assets.
   config.assets.debug = true
 
+  config.host = "http://localhost:3000"
+
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 

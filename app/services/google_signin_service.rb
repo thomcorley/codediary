@@ -1,11 +1,11 @@
-class GoogleSigninService
+  class GoogleSigninService
 
   def get_user_params(code)
     # # Signs in using the Google API. Returns an array of User params
 
     @client_id = "794263904785-vea01ahfrk7glbtclgmu384tqvbsid5d.apps.googleusercontent.com"
     @client_secret = "R-Yvu-RIXpQ3HT0EKbQJ-RMl"
-    @redirect_uri = "#{ENV["HOST"]}/intro"
+    @redirect_uri = "#{Rails.configuration.host}/intro"
 
     ap res = HTTParty.post("https://www.googleapis.com/oauth2/v4/token",
       body: {
@@ -14,9 +14,9 @@ class GoogleSigninService
         client_secret: @client_secret,
         redirect_uri: @redirect_uri,
         grant_type: "authorization_code"
-      }
+      }    
     )
-
+    
     jwt = res["id_token"]
     jwt_array = jwt.split(".")
     jwt_body = jwt_array[1]
