@@ -6,6 +6,10 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'devise', '~> 4.4', '>= 4.4.3'
+
+gem 'omniauth', '~> 1.8', '>= 1.8.1'
+
 gem 'redcarpet'
 
 gem 'pry'

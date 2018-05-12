@@ -25,24 +25,27 @@
 	<div class="row links links-heading">
 		<div class="col-xs-4">
 			<h5>
-			<%= link_to 'Home', user_path(@user) %>
+
 			</h5>
 		</div>
 
 		<div class="col-xs-4">
 			<h5>
-			<%= link_to 'All Entries', user_entries_path(@user) %>
+
 			</h5>
 		</div>
 
 		<div class="col-xs-4">
 			<h5>
-			<%= link_to 'New Entry', new_user_entry_path(@user) %>
+
 			</h5>
 		</div>		
 
 	</div>
 
+
+	 <p class="notice"><%= notice %></p>
+	 <p class="alert"><%= alert %></p>
 <%= yield %>
 
 <div class="row empty-space"></div>
